@@ -20,7 +20,6 @@
             </div>
         </nav>
 
-
         <main>
             <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -54,8 +53,10 @@
 
             <a class="btn btn-warning position-fixed bottom-0 end-0 m-3" href="./cart.html">
                 <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge bg-danger" id="cart-badge">0</span>
             </a>
         </main>
+
         <nav class="navbar navbar-light text-center py-4 mt-4 border-top align-items-center py-3 border-bottom" style="background-color: #e3f2fd;">
             <p>&copy; 2025 Jurassic World Souvenirs</p>
         </nav>
@@ -80,7 +81,21 @@
             { img: "./img/productos/gorra.webp", title: "Gorra de Dinosaurio", price: "$24.99", details: "Material: Poliester, Ajustable" },
             { img: "./img/productos/mochila.avif", title: "Mochila de Dinosaurio", price: "$39.99", details: "Capacidad: 15L, Material: Nylon" }
         ];
-        
+
+        // Function to update the cart badge
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-badge").textContent = cart.length;
+        }
+
+        // Adding product to the cart
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartBadge();
+        }
+
         document.getElementById("product-grid").innerHTML = featuredProducts.map((p, index) => `
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
@@ -94,7 +109,7 @@
                         <div class="collapse mt-2" id="details${index}">
                             <p class="card-text">${p.details}</p>
                         </div>
-                        <button class="btn btn-success w-100 mt-2">Añadir al carrito</button>
+                        <button class="btn btn-success w-100 mt-2" onclick='addToCart(${JSON.stringify(p)})'>Añadir al carrito</button>
                     </div>
                 </div>
             </div>
@@ -106,10 +121,13 @@
                 <div class="card-body">
                     <h5 class="card-title">${p.title}</h5>
                     <p class="fw-bold">${p.price}</p>
-                    <button class="btn btn-success w-100">Añadir al carrito</button>
+                    <button class="btn btn-success w-100" onclick='addToCart(${JSON.stringify(p)})'>Añadir al carrito</button>
                 </div>
             </div>
         `).join('');
+
+        // Initialize cart badge
+        updateCartBadge();
     </script>
 </body>
 </html>
