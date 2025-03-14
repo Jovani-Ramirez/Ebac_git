@@ -1,0 +1,19 @@
+// Mixin para flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Mixin para media queries
+@mixin responsive($size) {
+    @if $size == mobile {
+        @media (max-width: 768px) { @content; }
+    }
+    @else if $size == tablet {
+        @media (max-width: 1024px) { @content; }
+    }
+    @else if $size == desktop {
+        @media (min-width: 1025px) { @content; }
+    }
+}

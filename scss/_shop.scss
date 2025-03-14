@@ -1,0 +1,41 @@
+/* Estilos del botón flotante del carrito */
+.cart-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f4d03f;
+    color: #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.cart-button a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.cart-button i {
+    font-size: 1.5rem;
+}
+
+.cart-button span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 0.8rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
