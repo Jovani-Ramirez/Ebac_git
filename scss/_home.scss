@@ -1,0 +1,10 @@
+.carousel {
+    max-width: 100%; // Ajustar tamaño del carrusel
+    margin: 0 auto; // Centrarlo en la página
+
+    .carousel-item img {
+        width: 100%;
+        height: 400px; // Altura fija para uniformidad
+        object-fit: cover; // Evitar deformaciones
+    }
+}
